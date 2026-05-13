@@ -11,7 +11,7 @@ const NAV_LINKS = [
 ];
 
 /* Snappy spring — same feel as dvdrod */
-const spring: Transition = { type: "spring", stiffness: 420, damping: 38, mass: 0.85 };
+const spring: Transition = { type: "spring" as const, stiffness: 420, damping: 38, mass: 0.85 };
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);

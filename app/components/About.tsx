@@ -85,20 +85,20 @@ export default function About() {
         <div>
           <p style={{ fontSize: "1rem", lineHeight: 1.75, color: "var(--text)", marginBottom: "1.5rem" }}>
             <strong style={{ fontWeight: 700 }}>Years of experience in product design,</strong>
-            {" "}working from Bangkok agencies to global startups. I&apos;ve designed for fintech,
+            working from Bangkok agencies to global startups. I&apos;ve designed for fintech,
             fitness platforms, a streaming service and a food tech app with over 2 million users.
           </p>
           <p style={{ fontSize: "1rem", lineHeight: 1.75, color: "var(--text)", marginBottom: "1.5rem" }}>
             <strong style={{ fontWeight: 700 }}>My process is research-first.</strong>
-            {" "}I want to understand why users behave the way they do before I open Figma.
+            I want to understand why users behave the way they do before I open Figma.
           </p>
           <p style={{ fontSize: "1rem", lineHeight: 1.75, color: "var(--text)", marginBottom: "1.5rem" }}>
             <strong style={{ fontWeight: 700 }}>I own the full design scope,</strong>
-            {" "}from early research to shipped components. I like working in teams where decisions
+            from early research to shipped components. I like working in teams where decisions
             get debated properly, not just handed down.
           </p>
           <p style={{ fontSize: "1rem", lineHeight: 1.75, color: "var(--text)", marginBottom: "2rem" }}>
-            Since 2018, I&apos;ve served on the{" "}
+            Since 2018, I&apos;ve served on the
             <span style={{ color: "#4ade80", fontWeight: 600 }}>Awwwards Young Jury</span>,
             which keeps me honest about craft quality across the industry.
           </p>
@@ -185,11 +185,11 @@ export default function About() {
                     display: "flex",
                     alignItems: "center",
                     gap: "0.5rem",
-                    padding: "0.4rem 0.9rem", 
+                    padding: "0.4rem 0.9rem",
                     borderRadius: "9999px",
-                    border: "1px solid var(--border)", 
+                    border: "1px solid var(--border)",
                     fontSize: "0.72rem",
-                    fontWeight: 500, 
+                    fontWeight: 500,
                     color: "var(--muted)",
                     transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
                     cursor: "default",
