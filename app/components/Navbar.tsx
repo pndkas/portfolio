@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, Transition } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
 
 const NAV_LINKS = [
@@ -11,7 +11,7 @@ const NAV_LINKS = [
 ];
 
 /* Snappy spring — same feel as dvdrod */
-const spring = { type: "spring", stiffness: 420, damping: 38, mass: 0.85 };
+const spring: Transition = { type: "spring", stiffness: 420, damping: 38, mass: 0.85 };
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
