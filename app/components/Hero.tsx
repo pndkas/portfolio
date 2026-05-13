@@ -1,9 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { section } from "framer-motion/client";
+import { motion, Variants } from "framer-motion";
 
-/* Marquee ticker matching dvdrod.com */
 const TICKER_ITEMS = [
   "PRODUCT STRATEGY",
   "GOOD VIBES",
@@ -21,9 +19,9 @@ const stagger = {
   hidden: {},
   show: { transition: { staggerChildren: 0.15 } },
 };
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 32 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1] } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
 };
 
 export default function Hero() {
