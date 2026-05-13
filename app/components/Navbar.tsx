@@ -98,7 +98,7 @@ export default function Navbar() {
        */}
       <motion.nav
         layout
-        transition={spring}
+        transition={spring as any}
         style={{
           pointerEvents: "auto",
           display: "flex",
@@ -132,7 +132,7 @@ export default function Navbar() {
         {/* ── LOGO (animates from far left → left-side of pill) ── */}
         <motion.a
           layout
-          transition={spring}
+          transition={spring as any}
           href="#"
           style={{
             ...logoStyle,
@@ -159,7 +159,7 @@ export default function Navbar() {
         {/* ── NAV GROUP (animates from far right → right-side of pill) ── */}
         <motion.div
           layout
-          transition={spring}
+          transition={spring as any}
           style={{
             display: "flex",
             alignItems: "center",
