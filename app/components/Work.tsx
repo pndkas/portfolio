@@ -4,32 +4,43 @@ import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 
-const projects = [
+export const projects = [
   {
     id: "01",
-    client: "NeoTaste / 2025 – 2026",
-    title: "Turning free trial users into\nloyal members",
-    tags: ["RETENTION", "GAMIFICATION"],
-    stats: [
-      { value: "+22%", label: "Trial-to-paid\nconversion uplift" },
-      { value: "~48%", label: "Quest completion rate" },
+    client: "Personal Project / 2026",
+    title: "E-Commerce Platform Redesign",
+    tags: ["React.js", "NextJS", "TailwindCSS", "Zustand"],
+    links: [
+      { url: "https://github.com", label: "Github" },
+      { url: "https://example.com", label: "Live site" }
     ],
     image: "/project-1.png",
     wip: false,
   },
   {
     id: "02",
-    client: "NeoTaste / 2025 – 2026",
-    title: "Finding the right incentive to\ndouble referral volume",
-    tags: ["GROWTH", "A/B TESTING"],
-    stats: [
-      { value: "+148%", label: "Total referral\nvolume growth" },
-      { value: "5.2%", label: "Final referral rate\n(was 2.1%)" },
+    client: "Freelance / 2025",
+    title: "Real-time Chat Application",
+    tags: ["Typescript", "Node.js", "Socket.io", "React.js"],
+    links: [
+      { url: "https://github.com", label: "Github" },
     ],
     image: "/project-2.png",
     wip: true,
   },
+
 ];
+
+const TECH_ICONS: Record<string, string> = {
+  "Javascript": "devicon-javascript-plain colored",
+  "Typescript": "devicon-typescript-plain colored",
+  "React.js": "devicon-react-original colored",
+  "NextJS": "devicon-nextjs-plain",
+  "TailwindCSS": "devicon-tailwindcss-original colored",
+  "Zustand": "devicon-react-original colored",
+  "Node.js": "devicon-nodejs-plain colored",
+  "Socket.io": "devicon-socketio-original",
+};
 
 const cardFade: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -49,7 +60,7 @@ export default function Work() {
         transition={{ duration: 0.5 }}
         style={{ marginBottom: "2rem" }}
       >
-        <p style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.14em", color: "#444", textTransform: "uppercase", marginBottom: "0.6rem" }}>
+        <p style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.14em", color: "var(--muted)", textTransform: "uppercase", marginBottom: "0.6rem" }}>
           Selected Projects
         </p>
         <h2 style={{ fontFamily: "var(--font-syne), sans-serif", fontSize: "clamp(3rem, 8vw, 5rem)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 0.9, color: "var(--text)" }}>
@@ -111,28 +122,85 @@ export default function Work() {
 
                 <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap" }}>
                   {p.tags.map((tag) => (
-                    <span key={tag} style={{
-                      padding: "0.2rem 0.65rem", borderRadius: "9999px",
-                      border: "1px solid var(--border)", fontSize: "0.6rem",
-                      fontWeight: 700, letterSpacing: "0.08em", color: "var(--muted)",
-                    }}>
+                    <span key={tag}
+                      style={{
+                        display: "inline-flex", alignItems: "center", gap: "0.3rem",
+                        padding: "0.25rem 0.7rem", borderRadius: "9999px",
+                        border: "1px solid var(--border)", fontSize: "0.62rem",
+                        fontWeight: 700, letterSpacing: "0.05em", color: "var(--muted)",
+                        background: "rgba(255,255,255,0.02)",
+                        transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+                      }}
+                      onMouseEnter={(e) => {
+                        if (window.matchMedia("(hover: none)").matches) return;
+                        const span = e.currentTarget as HTMLSpanElement;
+                        span.style.borderColor = "var(--main)";
+                        span.style.color = "var(--text)";
+                        span.style.transform = "translateY(-2px)";
+                        span.style.background = "rgba(168, 85, 247, 0.05)";
+                        const icon = span.querySelector('i');
+                        if (icon) icon.style.filter = "grayscale(0)";
+                      }}
+                      onMouseLeave={(e) => {
+                        const span = e.currentTarget as HTMLSpanElement;
+                        span.style.borderColor = "var(--border)";
+                        span.style.color = "var(--muted)";
+                        span.style.transform = "translateY(0)";
+                        span.style.background = "rgba(255,255,255,0.02)";
+                        const icon = span.querySelector('i');
+                        if (icon) icon.style.filter = "grayscale(1)";
+                      }}
+                    >
+                      {TECH_ICONS[tag] && (
+                        <i className={`${TECH_ICONS[tag]} text-[0.75rem]`} style={{ filter: "grayscale(1)", transition: "filter 0.2s" }}></i>
+                      )}
                       {tag}
                     </span>
                   ))}
                 </div>
               </div>
 
-              {/* Stats */}
-              <div style={{ display: "flex", gap: "2rem", marginTop: "1.5rem" }}>
-                {p.stats.map((s) => (
-                  <div key={s.value}>
-                    <div style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", fontWeight: 800, color: "var(--text)", lineHeight: 1.1 }}>
-                      {s.value}
-                    </div>
-                    <div style={{ fontSize: "0.68rem", color: "var(--muted)", marginTop: "0.3rem", whiteSpace: "pre-line", lineHeight: 1.4 }}>
-                      {s.label}
-                    </div>
-                  </div>
+              {/* Links */}
+              <div style={{ display: "flex", gap: "1rem", marginTop: "1.5rem" }}>
+                {p.links?.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      display: "inline-flex", alignItems: "center", gap: "0.4rem",
+                      padding: "0.6rem 1.2rem", borderRadius: "9999px",
+                      background: "var(--surface)",
+                      border: "1px solid",
+                      borderColor: "var(--text)",
+                      color: "var(--text)",
+                      fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.05em",
+                      textDecoration: "none",
+                      transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+                    }}
+                    onMouseEnter={(e) => {
+                      if (window.matchMedia("(hover: none)").matches) return;
+                      (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--main)";
+                      (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+                      (e.currentTarget as HTMLAnchorElement).style.background = "rgba(168, 85, 247, 0.05)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--text)";
+                      (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+                      (e.currentTarget as HTMLAnchorElement).style.background = "var(--surface)";
+                    }}
+                  >
+                    {link.label}
+                    {link.label === "Github" && (
+                      <i className="devicon-github-original" style={{ fontSize: "0.85rem" }}></i>
+                    )}
+                    {link.label === "Live site" && (
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
+                      </svg>
+                    )}
+                  </a>
                 ))}
               </div>
             </div>
@@ -172,7 +240,7 @@ export default function Work() {
         style={{
           marginTop: "1.5rem",
           padding: "1.25rem 1.5rem",
-          borderTop: "1px solid var(--border-sub)",
+          borderBottom: "1px solid var(--border-sub)",
         }}
       >
         <div>
@@ -180,23 +248,32 @@ export default function Work() {
             Looking for more?
           </p>
           <p style={{ fontSize: "0.78rem", color: "var(--muted)" }}>
-            More work is available as a PDF, including a conversion project and a retention feature.
+            More project is available here, including a conversion project and a retention feature.
           </p>
         </div>
         <a
-          href="#"
+          href="/projects"
           style={{
             display: "inline-flex", alignItems: "center", gap: "0.4rem",
             padding: "0.5rem 1.1rem", borderRadius: "9999px",
             border: "1px solid var(--border)", fontSize: "0.7rem",
             fontWeight: 700, letterSpacing: "0.08em", color: "var(--text)",
             textDecoration: "none", whiteSpace: "nowrap",
-            transition: "border-color 0.2s",
+            transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
           }}
-          onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--muted)")}
-          onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--border)")}
+          onMouseEnter={(e) => {
+            if (window.matchMedia("(hover: none)").matches) return;
+            (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--main)";
+            (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+            (e.currentTarget as HTMLAnchorElement).style.background = "rgba(168, 85, 247, 0.05)";
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--border)";
+            (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+            (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+          }}
         >
-          VIEW PDF
+          MORE PROJECT
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M7 17L17 7M17 7H7M17 7V17" />
           </svg>

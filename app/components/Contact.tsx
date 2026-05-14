@@ -21,14 +21,13 @@ export default function Contact() {
         initial={{ opacity: 0, y: 12 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5 }}
-        style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.14em", color: "#444", textTransform: "uppercase", marginBottom: "0.8rem" }}
+        style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.14em", color: "var(--muted)", textTransform: "uppercase", marginBottom: "0.8rem" }}
       >
         Get in touch
       </motion.p>
 
       {/* Big heading — clickable mailto */}
-      <motion.a
-        href="mailto:pndkas@gmail.com"
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.1 }}
@@ -40,12 +39,8 @@ export default function Contact() {
           letterSpacing: "-0.03em",
           lineHeight: 0.9,
           color: "var(--text)",
-          textDecoration: "none",
           marginBottom: "4rem",
-          transition: "opacity 0.2s",
         }}
-        onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = "0.7")}
-        onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = "1")}
       >
         Say hi!<br />
         Let&apos;s talk
@@ -60,7 +55,7 @@ export default function Contact() {
         >
           <path d="M7 17L17 7M17 7H7M17 7V17" />
         </svg>
-      </motion.a>
+      </motion.div>
 
       {/* Bottom bar: email + location | social links */}
       <motion.div
@@ -68,7 +63,7 @@ export default function Contact() {
         animate={inView ? { opacity: 1 } : {}}
         transition={{ duration: 0.5, delay: 0.25 }}
         style={{
-          borderTop: "1px solid #1c1c1c",
+          borderTop: "1px solid var(--border-sub)",
           padding: "1.5rem 0 2.5rem",
           display: "flex",
           justifyContent: "space-between",
@@ -82,7 +77,7 @@ export default function Contact() {
           <p style={{ fontSize: "0.82rem", color: "var(--text)", fontWeight: 500, marginBottom: "0.1rem" }}>
             pndkas@gmail.com
           </p>
-          <p style={{ fontSize: "0.75rem", color: "#555" }}>Bangkok, Thailand</p>
+          <p style={{ fontSize: "0.75rem", color: "var(--muted)" }}>Bangkok, Thailand</p>
         </div>
 
         {/* Right: social links */}
@@ -97,12 +92,12 @@ export default function Contact() {
                 fontSize: "0.65rem",
                 fontWeight: 700,
                 letterSpacing: "0.1em",
-                color: "#555",
+                color: "var(--muted)",
                 textDecoration: "none",
                 transition: "color 0.2s",
               }}
               onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--main)")}
-              onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#555")}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--muted)")}
             >
               {s.label}
             </a>

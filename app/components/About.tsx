@@ -3,24 +3,21 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Lock } from "lucide-react";
-import { useTheme } from "../context/ThemeContext";
-import { useMemo } from "react";
 
 const experience = [
-  { company: "NeoTaste", role: "Product Designer", period: "2025 - Now" },
-  { company: "Zattoo", role: "Product Designer", period: "2023 - 2025" },
-  { company: "Gymondo", role: "Senior UI/UX Designer", period: "2019 - 2022" },
-  { company: "VASS × CaixaBank", role: "UI/UX Designer", period: "2017 - 2019" },
-  { company: "SEAT", role: "UI/UX Designer", period: "2016" },
-  { company: "Lafosca - Mobile Jazz", role: "Junior UI Designer", period: "2015 - 2016" },
+  { company: "Freelance", role: "Video Editor/ Graphic Design/ Digital Marketing", period: "JUL 2021 - DEC 2025" },
+  { company: "Miss lense", role: "Video Editor/ Graphic Design", period: "2021" },
+  { company: "Give Me Five", role: "Video Editor/ Graphic Design", period: "2021" },
+  { company: "Ds Organizing", role: "Video Editor/ Graphic Design", period: "2020-2021" },
+  { company: "Keaes Academics", role: "Video Editor/ Graphic Design", period: "2019-2020" },
 ];
 
-const awards = [
-  { title: "Best Mobile Banking App, Western Europe", org: "Global Finance", date: "Sep 2018" },
-  { title: "Best Mobile Tech Project", org: "The Banker Tech Project Awards", date: "Oct 2018" },
-  { title: "Best Project - Innovative Touchpoints & Connected Services", org: "BAI Global Innovation Awards", date: "Oct 2018" },
-  { title: "Silver - Digital New Service or Application", org: "London Design Awards", date: "Nov 2018" },
-];
+// const awards = [
+//   { title: "Best Mobile Banking App, Western Europe", org: "Global Finance", date: "Sep 2018" },
+//   { title: "Best Mobile Tech Project", org: "The Banker Tech Project Awards", date: "Oct 2018" },
+//   { title: "Best Project - Innovative Touchpoints & Connected Services", org: "BAI Global Innovation Awards", date: "Oct 2018" },
+//   { title: "Silver - Digital New Service or Application", org: "London Design Awards", date: "Nov 2018" },
+// ];
 
 const SKILLS_LIST = [
   { label: "Javascript", icon: "devicon-javascript-plain colored" },
@@ -64,7 +61,7 @@ export default function About() {
         initial={{ opacity: 0, y: 16 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5 }}
-        style={{ marginBottom: "4rem" }}
+        style={{ marginBottom: "2rem" }}
       >
         <p style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.14em", color: "var(--muted)", textTransform: "uppercase", marginBottom: "0.6rem" }}>
           My Story
@@ -73,6 +70,9 @@ export default function About() {
           About
         </h2>
       </motion.div>
+
+      {/* Divider */}
+      <div style={{ borderTop: "1px solid var(--border-sub)", marginBottom: "1.5rem" }} />
 
       {/* Two-column body */}
       <motion.div
@@ -84,23 +84,14 @@ export default function About() {
         {/* Left: bio + CV button */}
         <div>
           <p style={{ fontSize: "1rem", lineHeight: 1.75, color: "var(--text)", marginBottom: "1.5rem" }}>
-            <strong style={{ fontWeight: 700 }}>Years of experience in product design,</strong>
-            working from Bangkok agencies to global startups. I&apos;ve designed for fintech,
-            fitness platforms, a streaming service and a food tech app with over 2 million users.
+            <strong style={{ fontWeight: 700 }}>My approach to design is inherently data-driven and results-oriented.</strong>
+            I blend user experience with marketing technicalities to bridge the gap between business goals and user engagement.
           </p>
           <p style={{ fontSize: "1rem", lineHeight: 1.75, color: "var(--text)", marginBottom: "1.5rem" }}>
-            <strong style={{ fontWeight: 700 }}>My process is research-first.</strong>
-            I want to understand why users behave the way they do before I open Figma.
+            I specialize in crafting high-converting digital touchpoints, from interactive LINE Rich Menus to targeted digital assets. My design decisions are never based on guesswork—I integrate Facebook Pixel and data tracking to deeply understand conversion behavior, ensuring every visual element serves a measurable purpose.
           </p>
           <p style={{ fontSize: "1rem", lineHeight: 1.75, color: "var(--text)", marginBottom: "1.5rem" }}>
-            <strong style={{ fontWeight: 700 }}>I own the full design scope,</strong>
-            from early research to shipped components. I like working in teams where decisions
-            get debated properly, not just handed down.
-          </p>
-          <p style={{ fontSize: "1rem", lineHeight: 1.75, color: "var(--text)", marginBottom: "2rem" }}>
-            Since 2018, I&apos;ve served on the
-            <span style={{ color: "#4ade80", fontWeight: 600 }}>Awwwards Young Jury</span>,
-            which keeps me honest about craft quality across the industry.
+            I own the end-to-end execution of growth design. This includes managing Facebook Ads, setting up automated Messenger workflows to streamline user interactions, and collaborating directly with clients to translate their core requirements into high-performing technical setups.
           </p>
 
           <a
@@ -110,10 +101,19 @@ export default function About() {
               padding: "0.55rem 1.2rem", borderRadius: "9999px",
               border: "1px solid var(--border)", fontSize: "0.72rem",
               fontWeight: 700, letterSpacing: "0.08em", color: "var(--text)",
-              textDecoration: "none", transition: "border-color 0.2s",
+              textDecoration: "none", transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
             }}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--muted)")}
-            onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--border)")}
+            onMouseEnter={(e) => {
+              if (window.matchMedia("(hover: none)").matches) return;
+              (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--main)";
+              (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+              (e.currentTarget as HTMLAnchorElement).style.background = "rgba(168, 85, 247, 0.05)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--border)";
+              (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+              (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+            }}
           >
             VIEW CV
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -149,7 +149,7 @@ export default function About() {
           </div>
 
           {/* Awards */}
-          <div style={{ marginBottom: "2rem" }}>
+          {/* <div style={{ marginBottom: "2rem" }}>
             <p style={{ fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.14em", color: "var(--muted)", textTransform: "uppercase", marginBottom: "1rem" }}>
               Awards
             </p>
@@ -170,7 +170,7 @@ export default function About() {
                 <span style={{ fontSize: "0.68rem", color: "var(--muted)", whiteSpace: "nowrap" }}>{a.date}</span>
               </div>
             ))}
-          </div>
+          </div> */}
 
           {/* Skills */}
           <div>
@@ -196,6 +196,7 @@ export default function About() {
                     background: "rgba(255, 255, 255, 0.02)",
                   }}
                   onMouseEnter={(e) => {
+                    if (window.matchMedia("(hover: none)").matches) return;
                     (e.currentTarget as HTMLSpanElement).style.borderColor = "var(--main)";
                     (e.currentTarget as HTMLSpanElement).style.color = "var(--text)";
                     (e.currentTarget as HTMLSpanElement).style.transform = "translateY(-1px)";

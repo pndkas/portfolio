@@ -8,6 +8,16 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    cursor: none;
+  }
+
+  a,
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea {
+    cursor: pointer !important;
   }
 
   /* ── Dark mode (default) ── */
@@ -35,11 +45,11 @@
     --cursor: #0d0d0d;
     --surface: #e8e5de;
     --border: #d0cdc6;
-    --border-sub: #dedad3;
+    --border-sub: #d0cdc6;
     --text: #111111;
     --text2: #000000;
-    --muted: #888888;
-    --muted2: #aaaaaa;
+    --muted: #666666;
+    --muted2: #888888;
     --nav-bg: rgba(242, 240, 235, 0.88);
     --nav-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
     --pill-bg: rgba(242, 240, 235, 0.94);
@@ -58,7 +68,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
-    cursor: none;
     transition: background-color 0.4s ease, color 0.4s ease;
   }
 

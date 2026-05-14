@@ -73,7 +73,7 @@ export default function Hero() {
               style={{
                 position: "absolute",
                 inset: 0,
-                background: "--main",
+                background: "var(--main)",
                 animation: "scroll-bar 2.2s ease-in-out infinite",
                 transformOrigin: "top",
               }}
@@ -85,7 +85,7 @@ export default function Hero() {
               fontSize: "0.55rem",
               fontWeight: 700,
               letterSpacing: "0.2em",
-              color: "var(--mute)",
+              color: "var(--muted)",
               writingMode: "vertical-rl",
               transform: "rotate(180deg)",
               textTransform: "uppercase",
@@ -237,14 +237,14 @@ export default function Hero() {
                 fontSize: "0.65rem",
                 fontWeight: 700,
                 letterSpacing: "0.14em",
-                color: "var(--border)",
+                color: "var(--cursor)",
                 textTransform: "uppercase",
                 whiteSpace: "nowrap",
                 padding: "0 2.5rem",
               }}
             >
               {item}
-              <span style={{ marginLeft: "2.5rem", color: "var(--border-sub)" }}>•</span>
+              <span style={{ marginLeft: "2.5rem", color: "var(--cursor)" }}>•</span>
             </span>
           ))}
         </div>

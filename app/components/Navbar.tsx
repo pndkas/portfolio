@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { motion, Transition } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
 
@@ -18,6 +19,8 @@ export default function Navbar() {
   const [isMobile, setIsMobile] = useState(false);
   const { theme, toggle } = useTheme();
   const isDark = theme === "dark";
+  const pathname = usePathname();
+  const isProjectsPage = pathname === "/projects";
 
   /* ── Scroll detection ── */
   useEffect(() => {
@@ -69,9 +72,9 @@ export default function Navbar() {
     color: muted,
     textDecoration: "none",
     padding: "0.38rem 0.7rem",
-    borderRadius: "9999px",
     transition: "color 0.15s",
     whiteSpace: "nowrap",
+    position: "relative",
   };
 
   return (
@@ -133,7 +136,7 @@ export default function Navbar() {
         <motion.a
           layout
           transition={spring as any}
-          href="#"
+          href="/"
           style={{
             ...logoStyle,
             fontSize: isMobile
@@ -148,8 +151,10 @@ export default function Navbar() {
               : "0",
           }}
           onClick={(e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            if (pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
           }}
         >
           panida
@@ -174,28 +179,70 @@ export default function Navbar() {
             className="hidden md:flex items-center"
             style={{ gap: "0" }}
           >
-            {NAV_LINKS.map((l) => (
+            {isProjectsPage ? (
               <a
-                key={l.label}
-                href={l.href}
+                href="/"
                 style={linkStyle}
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.querySelector(l.href)?.scrollIntoView({
-                    behavior: "smooth",
-                  });
+                onMouseEnter={(e) => {
+                  if (window.matchMedia("(hover: none)").matches) return;
+                  (e.currentTarget as HTMLAnchorElement).style.color = "var(--main)";
+                  const line = e.currentTarget.querySelector(".nav-line") as HTMLSpanElement;
+                  if (line) line.style.transform = "scaleX(1)";
                 }}
-                onMouseEnter={(e) =>
-                ((e.currentTarget as HTMLAnchorElement).style.color =
-                  "var(--main)")
-                }
-                onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLAnchorElement).style.color = muted)
-                }
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.color = muted;
+                  const line = e.currentTarget.querySelector(".nav-line") as HTMLSpanElement;
+                  if (line) line.style.transform = "scaleX(0)";
+                }}
               >
-                {l.label}
+                BACK HOME
+                <span 
+                  className="nav-line"
+                  style={{
+                    position: "absolute", bottom: "0.3rem", left: "0.7rem", right: "0.7rem",
+                    height: "1.5px", background: "var(--main)",
+                    transform: "scaleX(0)", transformOrigin: "left",
+                    transition: "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+                  }}
+                />
               </a>
-            ))}
+            ) : (
+              NAV_LINKS.map((l) => (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  style={linkStyle}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.querySelector(l.href)?.scrollIntoView({
+                      behavior: "smooth",
+                    });
+                  }}
+                  onMouseEnter={(e) => {
+                    if (window.matchMedia("(hover: none)").matches) return;
+                    (e.currentTarget as HTMLAnchorElement).style.color = "var(--main)";
+                    const line = e.currentTarget.querySelector(".nav-line") as HTMLSpanElement;
+                    if (line) line.style.transform = "scaleX(1)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.color = muted;
+                    const line = e.currentTarget.querySelector(".nav-line") as HTMLSpanElement;
+                    if (line) line.style.transform = "scaleX(0)";
+                  }}
+                >
+                  {l.label}
+                  <span 
+                    className="nav-line"
+                    style={{
+                      position: "absolute", bottom: "0.3rem", left: "0.7rem", right: "0.7rem",
+                      height: "1.5px", background: "var(--main)",
+                      transform: "scaleX(0)", transformOrigin: "left",
+                      transition: "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+                    }}
+                  />
+                </a>
+              ))
+            )}
           </div>
 
 
@@ -218,9 +265,34 @@ export default function Navbar() {
               cursor: "pointer",
               whiteSpace: "nowrap",
               flexShrink: 0,
+              transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+            }}
+            onMouseEnter={(e) => {
+              if (window.matchMedia("(hover: none)").matches) return;
+              e.currentTarget.style.borderColor = "var(--main)";
+              e.currentTarget.style.color = "var(--main)";
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.background = "rgba(168, 85, 247, 0.05)";
+              const iconContainer = e.currentTarget.querySelector('.icon-container') as HTMLDivElement;
+              if (iconContainer) iconContainer.style.transform = "rotate(90deg)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = border;
+              e.currentTarget.style.color = muted;
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.background = "transparent";
+              const iconContainer = e.currentTarget.querySelector('.icon-container') as HTMLDivElement;
+              if (iconContainer) iconContainer.style.transform = "rotate(0deg)";
             }}
           >
-            <div style={{ position: "relative", width: 12, height: 12, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div 
+              className="icon-container"
+              style={{ 
+                position: "relative", width: 12, height: 12, 
+                display: "flex", alignItems: "center", justifyContent: "center",
+                transition: "transform 0.4s ease"
+              }}
+            >
               <motion.div
                 initial={false}
                 animate={{ rotate: isDark ? 45 : 0, opacity: isDark ? 1 : 0, scale: isDark ? 1 : 0.5 }}
