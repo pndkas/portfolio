@@ -12,7 +12,7 @@ const experience = [
   { company: "Keaes Academics", role: "Video Editor/ Graphic Design", period: "2019-2020" },
 ];
 
-const SKILLS_DATA = [
+export const SKILLS_DATA = [
   {
     category: "Languages",
     skills: [
