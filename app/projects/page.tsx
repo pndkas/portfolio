@@ -3,7 +3,7 @@
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { projects } from "../components/Work";
+import { projects } from "../components/Project";
 import Navbar from "../components/Navbar";
 import Cursor from "../components/Cursor";
 

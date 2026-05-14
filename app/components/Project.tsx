@@ -47,7 +47,7 @@ const cardFade: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] } },
 };
 
-export default function Work() {
+export default function Project() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -64,7 +64,7 @@ export default function Work() {
           Selected Projects
         </p>
         <h2 style={{ fontFamily: "var(--font-syne), sans-serif", fontSize: "clamp(3rem, 8vw, 5rem)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 0.9, color: "var(--text)" }}>
-          Work
+          Project
         </h2>
       </motion.div>
 
@@ -102,7 +102,7 @@ export default function Work() {
                       fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.08em", color: "#c88a00",
                     }}>
                       <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#c88a00" }} />
-                      WORK IN PROGRESS
+                      PROJECT IN PROGRESS
                     </span>
                   )}
                 </div>

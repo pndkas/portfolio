@@ -9,9 +9,8 @@ export default function Contact() {
 
   const socials = [
     { label: "EMAIL", href: "mailto:pndkas@gmail.com" },
+    { label: "GITHUB", href: "https://github.com/pndkas/" },
     { label: "LINKEDIN", href: "https://linkedin.com" },
-    { label: "DRIBBBLE", href: "https://dribbble.com" },
-    { label: "GUMROAD", href: "https://gumroad.com" },
   ];
 
   return (

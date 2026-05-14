@@ -12,42 +12,55 @@ const experience = [
   { company: "Keaes Academics", role: "Video Editor/ Graphic Design", period: "2019-2020" },
 ];
 
-// const awards = [
-//   { title: "Best Mobile Banking App, Western Europe", org: "Global Finance", date: "Sep 2018" },
-//   { title: "Best Mobile Tech Project", org: "The Banker Tech Project Awards", date: "Oct 2018" },
-//   { title: "Best Project - Innovative Touchpoints & Connected Services", org: "BAI Global Innovation Awards", date: "Oct 2018" },
-//   { title: "Silver - Digital New Service or Application", org: "London Design Awards", date: "Nov 2018" },
-// ];
-
-const SKILLS_LIST = [
-  { label: "Javascript", icon: "devicon-javascript-plain colored" },
-  { label: "Typescript", icon: "devicon-typescript-plain colored" },
-  { label: "HTML", icon: "devicon-html5-plain colored" },
-  { label: "CSS", icon: "devicon-css3-plain colored" },
-  { label: "Node.js", icon: "devicon-nodejs-plain colored" },
-  { label: "Express.js", icon: "devicon-express-original" },
-  { label: "React.js", icon: "devicon-react-original colored" },
-  { label: "NextJS", icon: "devicon-nextjs-plain" },
-  { label: "Nest.js", icon: "devicon-nestjs-plain colored" },
-  { label: "Vue.js", icon: "devicon-vuejs-plain colored" },
-  { label: "TailwindCSS", icon: "devicon-tailwindcss-original colored" },
-  { label: "Zustand", icon: "devicon-react-original colored" },
-  { label: "Socket.io", icon: "devicon-socketio-original" },
-  { label: "JWT", icon: "devicon-ssh-plain" }, // JWT doesn't have an icon in devicon, using generic security
-  { label: "Bcrypt", icon: "lock" }, // We'll handle Lucide separately
-  { label: "Git", icon: "devicon-git-plain colored" },
-  { label: "GitHub", icon: "devicon-github-original" },
-  { label: "Postman", icon: "devicon-postman-plain colored" },
-  { label: "Axios", icon: "devicon-azuresqldatabase-plain" }, // Axios generic
-  { label: "Docker", icon: "devicon-docker-plain colored" },
-  { label: "MySQL", icon: "devicon-mysql-plain colored" },
-  { label: "Prisma", icon: "devicon-prisma-original" },
-  { label: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
-  { label: "Figma", icon: "devicon-figma-plain colored" },
-  { label: "Canva", icon: "devicon-canva-original colored" },
-  { label: "Premiere Pro", icon: "devicon-premierepro-plain colored" },
-  { label: "Photoshop", icon: "devicon-photoshop-plain colored" },
-  { label: "Illustrator", icon: "devicon-illustrator-plain colored" },
+const SKILLS_DATA = [
+  {
+    category: "Languages",
+    skills: [
+      { label: "Javascript", icon: "devicon-javascript-plain colored" },
+      { label: "Typescript", icon: "devicon-typescript-plain colored" },
+      { label: "HTML", icon: "devicon-html5-plain colored" },
+      { label: "CSS", icon: "devicon-css3-plain colored" },
+    ]
+  },
+  {
+    category: "Frameworks & Library",
+    skills: [
+      { label: "React.js", icon: "devicon-react-original colored" },
+      { label: "NextJS", icon: "devicon-nextjs-plain" },
+      { label: "Vue.js", icon: "devicon-vuejs-plain colored" },
+      { label: "Nest.js", icon: "devicon-nestjs-plain colored" },
+      { label: "Node.js", icon: "devicon-nodejs-plain colored" },
+      { label: "Express.js", icon: "devicon-express-original" },
+      { label: "TailwindCSS", icon: "devicon-tailwindcss-original colored" },
+      { label: "Zustand", icon: "devicon-react-original colored" },
+      { label: "Socket.io", icon: "devicon-socketio-original" },
+      { label: "Axios", icon: "devicon-azuresqldatabase-plain" },
+      { label: "JWT", icon: "devicon-ssh-plain" },
+      { label: "Bcrypt", icon: "lock" },
+    ]
+  },
+  {
+    category: "Deployment & Database",
+    skills: [
+      { label: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
+      { label: "MySQL", icon: "devicon-mysql-plain colored" },
+      { label: "Prisma", icon: "devicon-prisma-original" },
+      { label: "Docker", icon: "devicon-docker-plain colored" },
+      { label: "Git", icon: "devicon-git-plain colored" },
+      { label: "GitHub", icon: "devicon-github-original" },
+      { label: "Postman", icon: "devicon-postman-plain colored" },
+    ]
+  },
+  {
+    category: "Graphic",
+    skills: [
+      { label: "Figma", icon: "devicon-figma-plain colored" },
+      { label: "Canva", icon: "devicon-canva-original colored" },
+      { label: "Premiere Pro", icon: "devicon-premierepro-plain colored" },
+      { label: "Photoshop", icon: "devicon-photoshop-plain colored" },
+      { label: "Illustrator", icon: "devicon-illustrator-plain colored" },
+    ]
+  }
 ];
 
 export default function About() {
@@ -148,74 +161,60 @@ export default function About() {
             ))}
           </div>
 
-          {/* Awards */}
-          {/* <div style={{ marginBottom: "2rem" }}>
-            <p style={{ fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.14em", color: "var(--muted)", textTransform: "uppercase", marginBottom: "1rem" }}>
-              Awards
-            </p>
-            {awards.map((a, i) => (
-              <div
-                key={i}
-                style={{
-                  display: "flex", justifyContent: "space-between",
-                  alignItems: "baseline", padding: "0.65rem 0",
-                  borderBottom: "1px solid var(--border-sub)",
-                  gap: "1rem",
-                }}
-              >
-                <div>
-                  <div style={{ fontSize: "0.88rem", fontWeight: 600, color: "var(--text)", lineHeight: 1.3 }}>{a.title}</div>
-                  <div style={{ fontSize: "0.7rem", color: "var(--muted)" }}>{a.org}</div>
-                </div>
-                <span style={{ fontSize: "0.68rem", color: "var(--muted)", whiteSpace: "nowrap" }}>{a.date}</span>
-              </div>
-            ))}
-          </div> */}
-
           {/* Skills */}
           <div>
-            <p style={{ fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.14em", color: "var(--muted)", textTransform: "uppercase", marginBottom: "1rem" }}>
+            <p style={{ fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.14em", color: "var(--muted)", textTransform: "uppercase", marginBottom: "1.5rem" }}>
               Skills
             </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem" }}>
-              {SKILLS_LIST.map((s) => (
-                <span
-                  key={s.label}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                    padding: "0.4rem 0.9rem",
-                    borderRadius: "9999px",
-                    border: "1px solid var(--border)",
-                    fontSize: "0.72rem",
-                    fontWeight: 500,
-                    color: "var(--muted)",
-                    transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
-                    cursor: "default",
-                    background: "rgba(255, 255, 255, 0.02)",
-                  }}
-                  onMouseEnter={(e) => {
-                    if (window.matchMedia("(hover: none)").matches) return;
-                    (e.currentTarget as HTMLSpanElement).style.borderColor = "var(--main)";
-                    (e.currentTarget as HTMLSpanElement).style.color = "var(--text)";
-                    (e.currentTarget as HTMLSpanElement).style.transform = "translateY(-1px)";
-                    (e.currentTarget as HTMLSpanElement).style.background = "rgba(168, 85, 247, 0.05)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLSpanElement).style.borderColor = "var(--border)";
-                    (e.currentTarget as HTMLSpanElement).style.color = "var(--muted)";
-                    (e.currentTarget as HTMLSpanElement).style.transform = "translateY(0)";
-                    (e.currentTarget as HTMLSpanElement).style.background = "rgba(255, 255, 255, 0.02)";
-                  }}
-                >
-                  {s.icon === "lock" ? (
-                    <Lock size={13} style={{ flexShrink: 0 }} />
-                  ) : (
-                    <i className={s.icon} style={{ fontSize: "0.9rem", opacity: 0.9 }}></i>
-                  )}
-                  {s.label}
-                </span>
+            
+            <div style={{ display: "flex", flexDirection: "column", gap: "1.8rem" }}>
+              {SKILLS_DATA.map((cat) => (
+                <div key={cat.category}>
+                  <p style={{ fontSize: "0.65rem", fontWeight: 600, color: "var(--muted)", marginBottom: "0.75rem", opacity: 0.8 }}>
+                    {cat.category}
+                  </p>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem" }}>
+                    {cat.skills.map((s) => (
+                      <span
+                        key={s.label}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "0.5rem",
+                          padding: "0.4rem 0.9rem",
+                          borderRadius: "9999px",
+                          border: "1px solid var(--border)",
+                          fontSize: "0.72rem",
+                          fontWeight: 500,
+                          color: "var(--muted)",
+                          transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+                          cursor: "default",
+                          background: "rgba(255, 255, 255, 0.02)",
+                        }}
+                        onMouseEnter={(e) => {
+                          if (window.matchMedia("(hover: none)").matches) return;
+                          (e.currentTarget as HTMLSpanElement).style.borderColor = "var(--main)";
+                          (e.currentTarget as HTMLSpanElement).style.color = "var(--text)";
+                          (e.currentTarget as HTMLSpanElement).style.transform = "translateY(-1px)";
+                          (e.currentTarget as HTMLSpanElement).style.background = "rgba(168, 85, 247, 0.05)";
+                        }}
+                        onMouseLeave={(e) => {
+                          (e.currentTarget as HTMLSpanElement).style.borderColor = "var(--border)";
+                          (e.currentTarget as HTMLSpanElement).style.color = "var(--muted)";
+                          (e.currentTarget as HTMLSpanElement).style.transform = "translateY(0)";
+                          (e.currentTarget as HTMLSpanElement).style.background = "rgba(255, 255, 255, 0.02)";
+                        }}
+                      >
+                        {s.icon === "lock" ? (
+                          <Lock size={13} style={{ flexShrink: 0 }} />
+                        ) : (
+                          <i className={s.icon} style={{ fontSize: "0.9rem", opacity: 0.9 }}></i>
+                        )}
+                        {s.label}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>

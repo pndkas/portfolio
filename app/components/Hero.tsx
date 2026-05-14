@@ -8,11 +8,6 @@ const TICKER_ITEMS = [
   "SYSTEMS THINKING",
   "DESIGN SYSTEMS",
   "0→1 PRODUCT WORK",
-  "PRODUCT STRATEGY",
-  "GOOD VIBES",
-  "SYSTEMS THINKING",
-  "DESIGN SYSTEMS",
-  "0→1 PRODUCT WORK",
 ];
 
 const stagger = {
@@ -39,8 +34,8 @@ export default function Hero() {
           100% { transform: scaleY(0) translateY(0); transform-origin: bottom; }
         }
         @keyframes marquee {
-          from { transform: translateX(0); }
-          to   { transform: translateX(-50%); }
+          from { transform: translate3d(0, 0, 0); }
+          to   { transform: translate3d(-50%, 0, 0); }
         }
       `}</style>
 
@@ -204,7 +199,7 @@ export default function Hero() {
                   textTransform: "uppercase",
                 }}
               >
-                Awwwards Young Jury
+                pndkas@gmail.com
               </div>
             </div>
           </motion.div>
@@ -212,25 +207,29 @@ export default function Hero() {
       </section>
 
       {/* ── Marquee ticker ── */}
-      < div
+      <div
         style={{
           overflow: "hidden",
+          whiteSpace: "nowrap",
           borderTop: "1px solid var(--border-sub)",
           borderBottom: "1px solid var(--border-sub)",
-          padding: "0.85rem 0",
+          padding: "1rem 0",
           background: "var(--bg)",
-        }
-        }
+          display: "flex",
+          alignItems: "center",
+          position: "relative",
+        }}
       >
         <div
           style={{
             display: "flex",
-            gap: "0",
             width: "max-content",
-            animation: "marquee 22s linear infinite",
+            animation: "marquee 40s linear infinite",
+            willChange: "transform",
           }}
         >
-          {TICKER_ITEMS.map((item, i) => (
+          {/* Map 4 times to ensure it covers even ultra-wide screens */}
+          {[...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
             <span
               key={i}
               style={{
@@ -239,12 +238,14 @@ export default function Hero() {
                 letterSpacing: "0.14em",
                 color: "var(--cursor)",
                 textTransform: "uppercase",
-                whiteSpace: "nowrap",
                 padding: "0 2.5rem",
+                display: "flex",
+                alignItems: "center",
+                flexShrink: 0,
               }}
             >
               {item}
-              <span style={{ marginLeft: "2.5rem", color: "var(--cursor)" }}>•</span>
+              <span style={{ marginLeft: "2.5rem", color: "var(--cursor)", opacity: 0.3 }}>•</span>
             </span>
           ))}
         </div>
