@@ -4,8 +4,9 @@ import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import ProjectCard from "./ProjectCard";
+import SectionHeader from "./ui/SectionHeader";
 
-import { projects, TECH_ICONS } from "../projects/page";
+import { projects, TECH_ICONS } from "../constants/projects";
 
 export default function Project() {
   const ref = useRef(null);
@@ -14,19 +15,7 @@ export default function Project() {
   return (
     <section id="work" ref={ref} className="w-full px-5 md:px-8 py-16 md:py-24">
       {/* Section header */}
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5 }}
-        style={{ marginBottom: "2rem" }}
-      >
-        <p style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.14em", color: "var(--muted)", textTransform: "uppercase", marginBottom: "0.6rem" }}>
-          Selected Project
-        </p>
-        <h2 style={{ fontFamily: "var(--font-syne), sans-serif", fontSize: "clamp(3rem, 8vw, 5rem)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 0.9, color: "var(--text)" }}>
-          Project
-        </h2>
-      </motion.div>
+      <SectionHeader subtitle="Selected Project" title="Project" inView={inView} />
 
       {/* Divider */}
       <div style={{ borderTop: "1px solid var(--border-sub)", marginBottom: "1.5rem" }} />

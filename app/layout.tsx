@@ -15,12 +15,12 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Panida — Senior Product Designer",
+  title: "Panida — Full-Stack Developer",
   description:
-    "Bangkok raised, Senior Product Designer. Years of experience across fintech, fitness, and digital products.",
+    "From crafting visual stories to engineering web solutions. Raised in Bangkok, I transitioned from a career in Video Editing, Graphic Design, and Digital Marketing to become a Full-Stack Developer—combining creative aesthetics with clean, scalable code.",
   openGraph: {
-    title: "Panida — Senior Product Designer",
-    description: "Senior Product Designer based in Bangkok, Thailand.",
+    title: "Panida — Full-Stack Developer",
+    description: "Full-Stack Developer based in Bangkok, Thailand.",
     type: "website",
   },
 };

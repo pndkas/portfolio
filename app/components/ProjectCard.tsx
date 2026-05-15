@@ -2,7 +2,9 @@
 
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
-import { TECH_ICONS } from "../projects/page";
+import { TECH_ICONS } from "../constants/projects";
+import { Lock } from "lucide-react";
+
 
 const cardFade: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -93,7 +95,11 @@ export default function ProjectCard({ project, index, animate = "show", delayOff
                 }}
               >
                 {TECH_ICONS[tag] && (
-                  <i className={`${TECH_ICONS[tag]} text-[0.75rem]`}></i>
+                  TECH_ICONS[tag] === "lock" ? (
+                    <Lock size={12} style={{ flexShrink: 0 }} />
+                  ) : (
+                    <i className={`${TECH_ICONS[tag]} text-[0.75rem]`}></i>
+                  )
                 )}
                 {tag}
               </span>

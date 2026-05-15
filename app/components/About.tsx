@@ -3,6 +3,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Lock } from "lucide-react";
+import { SKILLS_DATA } from "../constants/skills";
+import SectionHeader from "./ui/SectionHeader";
 
 const experience = [
   { company: "Freelance", role: "Video Editor/ Graphic Design/ Digital Marketing", period: "JUL 2021 - DEC 2025" },
@@ -12,56 +14,6 @@ const experience = [
   { company: "Keaes Academics", role: "Video Editor/ Graphic Design", period: "2019-2020" },
 ];
 
-export const SKILLS_DATA = [
-  {
-    category: "Languages",
-    skills: [
-      { label: "Javascript", icon: "devicon-javascript-plain colored" },
-      { label: "Typescript", icon: "devicon-typescript-plain colored" },
-      { label: "HTML", icon: "devicon-html5-plain colored" },
-      { label: "CSS", icon: "devicon-css3-plain colored" },
-    ]
-  },
-  {
-    category: "Frameworks & Library",
-    skills: [
-      { label: "React.js", icon: "devicon-react-original colored" },
-      { label: "NextJS", icon: "devicon-nextjs-plain" },
-      { label: "Vue.js", icon: "devicon-vuejs-plain colored" },
-      { label: "Nest.js", icon: "devicon-nestjs-plain colored" },
-      { label: "Node.js", icon: "devicon-nodejs-plain colored" },
-      { label: "Express.js", icon: "devicon-express-original" },
-      { label: "TailwindCSS", icon: "devicon-tailwindcss-original colored" },
-      { label: "Zustand", icon: "devicon-react-original colored" },
-      { label: "Socket.io", icon: "devicon-socketio-original" },
-      { label: "Axios", icon: "devicon-azuresqldatabase-plain" },
-      { label: "JWT", icon: "devicon-ssh-plain" },
-      { label: "Bcrypt", icon: "lock" },
-    ]
-  },
-  {
-    category: "Deployment & Database",
-    skills: [
-      { label: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
-      { label: "MySQL", icon: "devicon-mysql-plain colored" },
-      { label: "Prisma", icon: "devicon-prisma-original" },
-      { label: "Docker", icon: "devicon-docker-plain colored" },
-      { label: "Git", icon: "devicon-git-plain colored" },
-      { label: "GitHub", icon: "devicon-github-original" },
-      { label: "Postman", icon: "devicon-postman-plain colored" },
-    ]
-  },
-  {
-    category: "Graphic",
-    skills: [
-      { label: "Figma", icon: "devicon-figma-plain colored" },
-      { label: "Canva", icon: "devicon-canva-original colored" },
-      { label: "Premiere Pro", icon: "devicon-premierepro-plain colored" },
-      { label: "Photoshop", icon: "devicon-photoshop-plain colored" },
-      { label: "Illustrator", icon: "devicon-illustrator-plain colored" },
-    ]
-  }
-];
 
 export default function About() {
   const ref = useRef(null);
@@ -70,19 +22,7 @@ export default function About() {
   return (
     <section id="about" ref={ref} className="w-full px-5 md:px-8 py-16 md:py-24">
       {/* Section header */}
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5 }}
-        style={{ marginBottom: "2rem" }}
-      >
-        <p style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.14em", color: "var(--muted)", textTransform: "uppercase", marginBottom: "0.6rem" }}>
-          My Story
-        </p>
-        <h2 style={{ fontFamily: "var(--font-syne), sans-serif", fontSize: "clamp(3rem, 8vw, 5rem)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 0.9, color: "var(--text)" }}>
-          About
-        </h2>
-      </motion.div>
+      <SectionHeader subtitle="My Story" title="About" inView={inView} />
 
       {/* Divider */}
       <div style={{ borderTop: "1px solid var(--border-sub)", marginBottom: "1.5rem" }} />
@@ -166,7 +106,7 @@ export default function About() {
             <p style={{ fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.14em", color: "var(--muted)", textTransform: "uppercase", marginBottom: "1.5rem" }}>
               Skills
             </p>
-            
+
             <div style={{ display: "flex", flexDirection: "column", gap: "1.8rem" }}>
               {SKILLS_DATA.map((cat) => (
                 <div key={cat.category}>
