@@ -3,7 +3,7 @@
 import { motion, Variants } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Cursor from "../components/Cursor";
-import ProjectCard from "../components/ProjectCard";
+import { ProjectCard } from "../components/Project";
 import { projects, TECH_ICONS } from "../constants/projects";
 
 

@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Work from "./components/Project";
+import Project from "./components/Project";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -14,7 +14,7 @@ export default function Home() {
 
       <main className="flex flex-col items-center w-full overflow-hidden">
         <Hero />
-        <Work />
+        <Project />
         <About />
         <Contact />
         <Footer />
